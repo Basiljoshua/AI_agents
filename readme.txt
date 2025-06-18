@@ -29,7 +29,7 @@ def use_gemini_openai_compatible():
     llm = LLM(
         model="openai/gemini-2.0-flash",
         base_url="https://generativelanguage.googleapis.com/v1beta/openai/",
-        api_key="AIzaSyDrShjpMrOg6kP7bZQN6ywl7lk3hcSZEPI",  # Replace with your actual key
+        api_key="AIza*******Og6kP7bZQN6ywl7lk3hcSZEPI",  # Replace with your actual key
     )
     
     return llm
