@@ -4,6 +4,7 @@
 import warnings 
 warnings.filterwarnings('ignore')
 
+from datetime import date
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -99,7 +100,7 @@ news_fetch = Task(
     ),
     expected_output=(
         "Deliver crisp and clear news updates in bullet points from available tools.\n"
-        "- Each point should be followed by a brief explanation to provide meaningful context.\n"
+        "- Each point should contain a few sentenses to read and understand about the issue.\n"
         "- Remove repetitive news content.\n"
         "- Ensure the facts are accurate.\n"
         "- Maintain an informative, neutral, and insightful tone suitable for a UPSC aspirant.\n" 
@@ -113,16 +114,16 @@ news_prioritize = Task(
     description=(
         "Review the news bullet points written by the Senior News Reporter in response to {Student}'s request. "
         "Your job is to select and rank the **top 10 news items** based on the following priority criteria:\n"
-        "1. International News (highest priority)\n"
+        "1. International News\n"
         "2. Geo-political developments\n"
         "3. News on Indian Government Policies\n"
         "4. News on Indian Economy and New business developments"
-        "\nAny bullet points containing obscene, inappropriate, or irrelevant content must be removed.\n"
+        "\nAny bullet points containing obscene, inappropriate must be removed.\n"
         "Ensure the final output is well-structured, clearly written, and contain a conclusion."
     ),
     expected_output=(
         "A concise and well-organized list of the **top 10 news articles**, ranked by the priority criteria.\n"
-        "- Each bullet point must include a short, briefing of more details of the news bullet.\n"
+        "- Each point should contain a few sentenses to read and understand about the issue.\n"
         "- Each bullet point should cover a distinct topic—avoid repetition or multiple points on the same issue.\n"
         "- Content should be easily digestible and ideal for UPSC note-making.\n"
         "- Avoid excessive jargon and add the source of the news at last."
@@ -130,7 +131,7 @@ news_prioritize = Task(
     # This task does not have access to the docs scrape tool.
     # The agent must rely only on the content provided by the Support agent.
     agent=UPSC_news_ranker,
-    output_file="Todays{Date} Relevant News.md"
+    output_file="{Date} News.md"
 )
 
 print("Putting the crew together...")
@@ -145,8 +146,9 @@ crew = Crew(
 
 
 print(" Starting Kickoff...")
-result = crew.kickoff(inputs={"Student" : "Basil Joshua Reji","Date":"18-06"})
-print(result)
+datetoday = date.today().strftime("%d-%m-%Y")  # e.g., '23-06-2025'
+result = crew.kickoff(inputs={"Student" : "Basil Joshua Reji","Date":datetoday})
+
 
 
 

@@ -157,31 +157,3 @@ event_details = {
 }
 
 result = event_management_crew.kickoff(inputs=event_details)
-
-# from crewai import Agent , Task , Crew
-
-# # Create an agent
-# agent = Agent(
-#     role="AI Assistant",
-#     goal="Help users with their questions",
-#     backstory="You are a helpful AI assistant powered by Gemini.",
-#     llm=llm,
-#     verbose=True
-# )
-
-# # Create a task
-# task = Task(
-#     description="Explain what CrewAI is and its main benefits",
-#     expected_output="A clear explanation of CrewAI and its key advantages",
-#     agent=agent
-# )
-
-# # Create and run the crew
-# crew = Crew(
-#     agents=[agent],
-#     tasks=[task],
-#     verbose=True
-# )
-
-# result = crew.kickoff()
-# print(result)
